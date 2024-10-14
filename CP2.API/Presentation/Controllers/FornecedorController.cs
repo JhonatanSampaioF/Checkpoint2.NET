@@ -5,6 +5,8 @@ using Microsoft.AspNetCore.Mvc;
 using System.Net;
 using Swashbuckle.AspNetCore.Annotations;
 
+
+
 namespace CP2.API.Presentation.Controllers
 {
     [Route("api/[controller]")]
@@ -34,10 +36,11 @@ namespace CP2.API.Presentation.Controllers
 
 
         [HttpGet("{id}")]
+        [SwaggerOperation(Summary = "Busca um fornecedor", Description = "Este endpoint retorna um fornecedor específico pelo id.")]
         [Produces<FornecedorEntity>]
         public IActionResult GetPorId(int id)
         {
-            var objModel = _applicationService.ObterFornecedorPorId(id);
+            var objModel = _applicationService.ObterFornecedorporId(id);
 
             if (objModel is not null)
                 return Ok(objModel);
@@ -47,6 +50,7 @@ namespace CP2.API.Presentation.Controllers
 
 
         [HttpPost]
+        [SwaggerOperation(Summary = "Salva um novo fornecedor", Description = "Este endpoint cadastra um novo fornecedor.")]
         [Produces<FornecedorEntity>]
         public IActionResult Post([FromBody] FornecedorDto entity)
         {
@@ -70,6 +74,7 @@ namespace CP2.API.Presentation.Controllers
         }
 
         [HttpPut("{id}")]
+        [SwaggerOperation(Summary = "Edita um fornecedor", Description = "Este endpoint edita um fornecedor pelo id.")]
         [Produces<FornecedorEntity>]
         public IActionResult Put(int id, [FromBody] FornecedorDto entity)
         {
@@ -94,6 +99,7 @@ namespace CP2.API.Presentation.Controllers
 
 
         [HttpDelete("{id}")]
+        [SwaggerOperation(Summary = "Deleta um fornecedor", Description = "Este endpoint deleta um fornecedor cadastrado pelo id.")]
         [Produces<FornecedorEntity>]
         public IActionResult Delete(int id)
         {

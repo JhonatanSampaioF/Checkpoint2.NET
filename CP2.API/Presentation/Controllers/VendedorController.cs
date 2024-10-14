@@ -34,10 +34,11 @@ namespace CP2.API.Presentation.Controllers
 
 
         [HttpGet("{id}")]
+        [SwaggerOperation(Summary = "Busca um vendedor", Description = "Este endpoint retorna um vendedor específico pelo id.")]
         [Produces<VendedorEntity>]
         public IActionResult GetPorId(int id)
         {
-            var objModel = _applicationService.ObterVendedorPorId(id);
+            var objModel = _applicationService.ObterVendedorporId(id);
 
             if (objModel is not null)
                 return Ok(objModel);
@@ -47,6 +48,7 @@ namespace CP2.API.Presentation.Controllers
 
 
         [HttpPost]
+        [SwaggerOperation(Summary = "Salva um novo vendedor", Description = "Este endpoint cadastra um novo vendedor.")]
         [Produces<VendedorEntity>]
         public IActionResult Post([FromBody] VendedorDto entity)
         {
@@ -70,6 +72,7 @@ namespace CP2.API.Presentation.Controllers
         }
 
         [HttpPut("{id}")]
+        [SwaggerOperation(Summary = "Edita um vendedor", Description = "Este endpoint edita um vendedor pelo id.")]
         [Produces<VendedorEntity>]
         public IActionResult Put(int id, [FromBody] VendedorDto entity)
         {
@@ -94,6 +97,7 @@ namespace CP2.API.Presentation.Controllers
 
 
         [HttpDelete("{id}")]
+        [SwaggerOperation(Summary = "Deleta um vendedor", Description = "Este endpoint deleta um vendedor cadastrado pelo id.")]
         [Produces<VendedorEntity>]
         public IActionResult Delete(int id)
         {
